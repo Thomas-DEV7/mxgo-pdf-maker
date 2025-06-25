@@ -165,7 +165,8 @@ class OrderServiceController extends Controller
             ->setOption('margin-right', '10mm')
             ->setOption('encoding', 'UTF-8')
             ->setOption('enable-local-file-access', true)
-            ->setOption('footer-right', '[page]/[topage]');
+            ->setOption('footer-right', '[page]/[topage]')
+            ->setOption('disable-smart-shrinking', true);
         
         return $pdf->inline("OS-{$osData['header']['order_number']}.pdf");
     }

@@ -27,12 +27,27 @@
             color: #000000;
         }
         
-        /* Cabeçalho da empresa */
-        .company-header {
-            text-align: center;
+        /* Container do cabeçalho */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 4mm;
             border-bottom: 1px solid #000;
             padding-bottom: 2mm;
+        }
+        
+        /* Logo da empresa */
+        .company-logo {
+            width: 50mm;
+            height: auto;
+            max-height: 20mm;
+        }
+        
+        /* Informações da empresa */
+        .company-info {
+            text-align: center;
+            flex-grow: 1;
         }
         
         .company-name {
@@ -49,7 +64,6 @@
         .document-info {
             text-align: right;
             font-size: 8pt;
-            margin-bottom: 5mm;
         }
         
         /* Cabeçalho da OS */
@@ -168,19 +182,27 @@
 </head>
 <body>
 
-<!-- Cabeçalho da empresa -->
-<div class="company-header">
-    <div class="company-name">{{ $osData['header']['company_name'] }}</div>
-    <div class="company-address">{{ $osData['header']['company_address'] }}</div>
+<!-- Cabeçalho com logo -->
+<div class="header-container">
+    <!-- Logo da empresa -->
+    <div>
+        <img class="company-logo" src="{{ public_path('assets/mtx.jpeg') }}" alt="Logo MXGO">
+    </div>
+    
+    <!-- Informações da empresa -->
+    <div class="company-info">
+        <div class="company-name">{{ $osData['header']['company_name'] }}</div>
+        <div class="company-address">{{ $osData['header']['company_address'] }}</div>
+    </div>
+    
+    <!-- Informações do documento -->
+    <div class="document-info">
+        {{ $osData['header']['document_reference'] }}<br>
+        {{ $osData['header']['document_date'] }}
+    </div>
 </div>
 
-<!-- Informações do documento -->
-<div class="document-info">
-    {{ $osData['header']['document_reference'] }}<br>
-    {{ $osData['header']['document_date'] }}
-</div>
-
-<!-- Cabeçalho da Ordem de Serviço -->
+<!-- Restante do conteúdo permanece igual -->
 <div class="order-header">
     <div class="order-number">OS #{{ $osData['header']['order_number'] }}</div>
     <div class="aircraft-prefix">{{ $osData['header']['aircraft_prefix'] }}</div>
